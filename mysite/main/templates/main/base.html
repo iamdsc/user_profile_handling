@@ -1,8 +1,8 @@
 <head>
-	<!-- {% load static %} -->
+	{% load static %}
 	<!-- materialize css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
 
 </head>
@@ -12,61 +12,67 @@
     	<div class="red darken-1 nav-wrapper">
       	<a href="#" class="brand-logo">FileSaver</a>
       	<ul id="nav-mobile" class="right hide-on-med-and-down">
-        	<li><a href="/">Home</a></li>
-        	<li><a href="/register">Register</a></li>
-        	<li><a href="/login">Login</a></li>
+        <li><a href="/">Home</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="/account">{{user.username}}</a></li>
+        <li><a href="/logout">Logout</a></li>
+        {% else %}
+        <li><a href="/register">Register</a></li>
+        <li><a href="/login">Login</a></li>
+        {% endif %}
       	</ul>
     	</div>
   	</nav>
   	<br><br>
   	<div class='container'>
-	   <div class="row">
-	    <div class="col s12 m6 l4">
-	      <div style='height: 50%;width: 70%;'class="card">
-	        <div class="card-image">
-	          <img src='https://static.makeuseof.com/wp-content/uploads/2011/01/Format07.png'>
-	          <span class="blue-text text-darken-2 card-title">My File</span>
-	        </div>
-	        <div class="card-content">
-	          
-	        </div>
-	        <div class="card-action">
-	          <a href="#">Download</a>
-	        </div>
-	      </div>
-	    </div>
-  		<!-- </div> -->
-  		 <!-- <div class="row"> -->
-	    <div class="col s12 m6 l4">
-	      <div style='height: 50%;width: 70%;' class="card">
-	        <div class="card-image">
-	          <img src='https://static.makeuseof.com/wp-content/uploads/2011/01/Format07.png'>
-	          <span class="blue-text text-darken-2 card-title">My File</span>
-	        </div>
-	        <div class="card-content">
-	          
-	        </div>
-	        <div class="card-action">
-	          <a href="#">Download</a>
-	        </div>
-	      </div>
-	    </div>
-  		<!-- </div> -->
-  		 <!-- <div class="row"> -->
-	    <div class="col s12 m6 l4">
-	      <div style='height: 50%;width: 70%;' class="card">
-	        <div class="card-image">
-	          <img src='https://static.makeuseof.com/wp-content/uploads/2011/01/Format07.png'>
-	          <span class="blue-text text-darken-2 card-title">My File</span>
-	        </div>
-	        <div class="card-content">
-	         
-	        </div>
-	        <div class="card-action">
-	          <a href="#">Download</a>
-	        </div>
-	      </div>
-	    </div>
-  		</div>
-  	</div>
+<!--      <div class="row">
+      <div class="col s12 m6 l4">
+        <div style='height: 50%;width: 70%;'class="card">
+          <div class="card-image">
+            <img src='https://static.makeuseof.com/wp-content/uploads/2011/01/Format07.png'>
+            <span class="blue-text text-darken-2 card-title">My File</span>
+          </div>
+          <div class="card-content">
+            
+          </div>
+          <div class="card-action">
+            <a href="#">Download</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6 l4">
+        <div style='height: 50%;width: 70%;' class="card">
+          <div class="card-image">
+            <img src='https://static.makeuseof.com/wp-content/uploads/2011/01/Format07.png'>
+            <span class="blue-text text-darken-2 card-title">My File</span>
+          </div>
+          <div class="card-content">
+            
+          </div>
+          <div class="card-action">
+            <a href="#">Download</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l4">
+        <div style='height: 50%;width: 70%;' class="card">
+          <div class="card-image">
+            <img src='https://static.makeuseof.com/wp-content/uploads/2011/01/Format07.png'>
+            <span class="blue-text text-darken-2 card-title">My File</span>
+          </div>
+          <div class="card-content">
+           
+          </div>
+          <div class="card-action">
+            <a href="#">Download</a>
+          </div>
+        </div>
+      </div>
+      </div>
+ -->  	
+      {% block content %}
+      {% endblock %}
+
+    </div>
 </body>
