@@ -23,6 +23,7 @@ app_name = 'main'
 urlpatterns = [
 	path('', views.homepage, name='homepage'),
 	path('register', views.register, name='register'),
+	path('account', views.account, name='account'),
 	path('login', views.login_request, name='login'),
 	path('logout', views.logout_request, name='logout'),
 	path('files', views.list_file, name='list_file'),
