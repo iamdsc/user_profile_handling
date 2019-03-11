@@ -44,7 +44,8 @@ def logout_request(request):
 	return redirect('main:homepage')
 
 def list_file(request):
-	return render(request, 'main/files.html')
+	myfiles = MyFile.objects.all().filter(owner=request.user)
+	return render(request, 'main/files.html',{'myfiles':myfiles})
 
 def file_upload(request):
 	if request.method == 'POST':
