@@ -120,5 +120,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR,'main/files')
+
+MEDIA_URL = '/myfile/'
 # admin-username: admin
 # admin-password: admin@1234

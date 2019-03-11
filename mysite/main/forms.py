@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import MyFile
 
 
 class NewUserForm(UserCreationForm):
@@ -17,6 +18,7 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user
 
-
-
-
+class FileForm(forms.ModelForm):
+	class Meta:
+		model = MyFile
+		fields = ('title', 'description', 'file')

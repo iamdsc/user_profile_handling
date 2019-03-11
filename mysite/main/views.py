@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import NewUserForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-
+from .forms import FileForm
+from .models import MyFile
 
 # Create your views here.
 def homepage(request):
@@ -41,3 +42,22 @@ def login_request(request):
 def logout_request(request):
 	logout(request)
 	return redirect('main:homepage')
+
+def list_file(request):
+	return render(request, 'main/files.html')
+
+def file_upload(request):
+	if request.method == 'POST':
+		form = FileForm(request.POST, request.FILES)
+		if form.is_valid():
+			obj=MyFile(title=form.cleaned_data.get('title'),
+					   description=form.cleaned_data.get('description'),
+					   owner=request.user,
+					   file=request.FILES['file'])
+			obj.save()
+			return redirect('/files')
+	else:
+		form=FileForm()
+	return render(request, 'main/upload.html', {'form':form})
+
+

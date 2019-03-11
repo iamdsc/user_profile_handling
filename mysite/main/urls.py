@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'main'
 
@@ -23,4 +25,9 @@ urlpatterns = [
 	path('register', views.register, name='register'),
 	path('login', views.login_request, name='login'),
 	path('logout', views.logout_request, name='logout'),
+	path('files', views.list_file, name='list_file'),
+	path('files/upload/',views.file_upload, name='file_upload'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
