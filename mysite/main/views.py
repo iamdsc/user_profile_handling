@@ -61,4 +61,9 @@ def file_upload(request):
 		form=FileForm()
 	return render(request, 'main/upload.html', {'form':form})
 
+def delete_file(request, pk):
+	if request.method == 'POST':
+		file = MyFile.objects.get(pk=pk)
+		file.delete()
+	return redirect('/files')
 

@@ -26,6 +26,7 @@ urlpatterns = [
 	path('login', views.login_request, name='login'),
 	path('logout', views.logout_request, name='logout'),
 	path('files', views.list_file, name='list_file'),
+	path('files/<int:pk>/', views.delete_file, name='delete_file'),
 	path('files/upload/',views.file_upload, name='file_upload'),
 ]
 

@@ -13,3 +13,8 @@ class MyFile(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	# overriding default model delete method
+	def delete(self, *args, **kwargs):
+		self.file.delete()	# deleting file in file system
+		super().delete(*args, **kwargs)

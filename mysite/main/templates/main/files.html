@@ -4,7 +4,7 @@
 	<div class="row">
 		{% for file in myfiles %}
 	    <div class="col s12 m6 l4">
-	      <div style='height: 40%;width: 70%;'class="card">
+	      <div style='width:200px;height:auto;'class="card">
 	        <div class="card-image">
 	          <img src='https://static.makeuseof.com/wp-content/uploads/2011/01/Format07.png'>
 	          <span class="blue-text text-darken-2 card-title">{{ file.title}}</span>
@@ -12,9 +12,12 @@
 	        <div class="card-content">
 	          {{file.description}}
 	        </div>
-	        <div class="card-action">
-	          <a href="{{file.file.url}}" target='_blank'>Download</a>
-	        </div>
+	          <a style='width:100%;'class='btn btn-outline-info'href="{{file.file.url}}" target='_blank'>Download</a>
+	          <br>
+	          <form method="post" action="files/{{file.pk}}/">
+	          	{% csrf_token %}
+	          	<button style='width:100%;' type="submit" class="btn-small red">Delete</button>
+	          </form>
 	       </div>
 	    </div>
 	    {% endfor %}
